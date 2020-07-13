@@ -50,7 +50,7 @@ class MainActivity() : AppCompatActivity(){
             val databaseHandler: DatabaseHandler = DatabaseHandler(this)
             if (name.trim() != "" && email.trim() != "") {//removed bolusTime.trim() != "" &&
                 val status =
-                    databaseHandler.addEmployee(BolusModelClass(bolusTime, name , email))
+                    databaseHandler.addEmployee(BolusModelClass(bolusTimeMins, name , email))
                 if (status > -1) {
                     Toast.makeText(applicationContext, "record save", Toast.LENGTH_LONG).show()
 
@@ -72,7 +72,7 @@ class MainActivity() : AppCompatActivity(){
             val databaseHandler: DatabaseHandler = DatabaseHandler(this)
             //calling the viewEmployee method of DatabaseHandler class to read the records
             val bolus: List<BolusModelClass> = databaseHandler.viewEmployee()
-            val bolusArrayId = Array<String>(bolus.size) { "null" }
+            val bolusArrayId = Array<Long>(bolus.size) { 0 }
             val bolusArrayName = Array<String>(bolus.size) { "null" }
             val bolusArrayEmail = Array<String>(bolus.size) { "null" }
             var index = 0
