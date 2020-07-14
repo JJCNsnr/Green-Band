@@ -32,7 +32,7 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context,DATABASE_NAME,
         db?.execSQL(CREATE_CONTACTS_TABLE)
 
          */
-        db?.execSQL("CREATE TABLE BolusTable(btime TEXT PRIMARY KEY,name TEXT,email TEXT)")//this is simple code
+        db?.execSQL("CREATE TABLE BolusTable(btime Long PRIMARY KEY,name TEXT,email TEXT)")//this is simple code
    //create another table for Carbs
 
     }
@@ -76,7 +76,7 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context,DATABASE_NAME,
                 userName = cursor.getString(cursor.getColumnIndex("name"))
                 userEmail = cursor.getString(cursor.getColumnIndex("email"))
                 val bolus= BolusModelClass(
-                    bolusTime = bolusTime,
+                    bolusTime = bolusTime.toLong(),
                     name = userName,
                     email = userEmail
                 )
